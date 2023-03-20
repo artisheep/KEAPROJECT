@@ -1,37 +1,31 @@
-import logo from './logo.svg';
-import Header from './component/Header';
-import Footer from './component/Footer';
-import Teammate from './component/Teammate';
-import Home from './component/Home';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import './App.css';
-import Vision from './component/Vision';
-import About from './component/About';
-import Content from './component/Contents';
-import Survey from './component/Survey';
-import Calendar from './component/Calendar';
+import{BrowserRouter,
+      Routes,
+      Route} from "react-router-dom";
+import styled from "styled-components";
+// Pages
+import MainPage from './page/MainPage'; 
+import PreviewPage from "./page/PreviewPage";
 
+const MainTitleText
+= styled.p`
+font-size: 24px;
+font-weight: bold;
+text-align: center;
+`;
 
-function App() {
+function App(props) {
   return (
+    <div > 
     <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={ <Home />}>
-          </Route>
-          <Route path="/vision" element={<Vision />} />
-          <Route path="/teammate" element={<Teammate />} />
-          <Route path="/teammate/:member" element={<About />} />
-          <Route path="/contents" element={<Content />} />
-          <Route path="/survey" element={<Survey />} />
-          <Route path="/todo" element={<Calendar />}></Route>
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <MainTitleText>Form generator</MainTitleText>
+      <Routes>
+        <Route index element={<MainPage />} /> 
+        <Route path="preview" element={<PreviewPage/>} />
+      </Routes>
+    </BrowserRouter> 
+ 
+    </div>
   );
 }
-
 
 export default App;
